@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle color="light" style="display: block !important;">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goSearch()" color="light">
+        <ion-icon name="search" style="zoom: .8;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+  <ion-content>
+    <ion-grid padding class="anim-gradient">
+      <ion-row>
+        <ion-col col-4 padding>
+          <ion-thumbnail item-start class="nashville vignette covered">
+            <img src="https://ionicframework.com/dist/preview-app/www/assets/img/thumbnail-kitten-1.jpg">
+          </ion-thumbnail>
+        </ion-col>
+        <ion-col col-8 padding class="profile">
+          <h3>UI Kitten Shrink</h3>
+          <p><ion-icon name="pin"></ion-icon> Jatinagor &mdash; Bandung</p>
+          <p><ion-icon name="bookmark"></ion-icon> Militant Studio</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  
+    <div padding color="gray" style="background: #f5f5f5; padding-top: 100px;">
+      <ion-segment [(ngModel)]="pages" color="primary">
+        <ion-segment-button value="bio">
+          Bio
+        </ion-segment-button>
+        <ion-segment-button value="social">
+          Sosial
+        </ion-segment-button>
+        <ion-segment-button value="foto">
+          Foto
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="pages">
+      <div *ngSwitchCase="'bio'" padding>
+        <ion-list>
+          <ion-list-header>
+            About
+            <ion-icon name="ios-alert-outline" item-end style="zoom:.8"></ion-icon>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon name="ios-star-outline" item-start></ion-icon>
+            Terminator II
+          </ion-item>
+          <ion-list-header>
+            Hometown
+            <ion-icon name="ios-pin-outline" item-end></ion-icon>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon name="ios-star-outline" item-start></ion-icon>
+            The Empire Strikes Back
+          </ion-item>
+          <ion-item>
+            <ion-icon name="ios-star-outline" item-start></ion-icon>
+            Blade Runner
+          </ion-item>
+        </ion-list>
+      </div>
+    
+      <ion-list *ngSwitchCase="'social'" padding>
+        <ion-item>
+          <ion-icon name="logo-facebook" item-start></ion-icon>
+          Facebook
+        </ion-item>
+        <ion-item>
+          <ion-icon name="logo-twitter" item-start></ion-icon>
+          Twitter
+        </ion-item>
+        <ion-item>
+          <ion-icon name="logo-instagram" item-start></ion-icon>
+          Instagram
+        </ion-item>
+        <ion-item>
+          <ion-icon name="logo-whatsapp" item-start></ion-icon>
+          WhatsApp
+        </ion-item>
+        <ion-item>
+          <ion-icon name="logo-youtube" item-start></ion-icon>
+          YouTube
+        </ion-item>
+        <ion-item>
+          <ion-icon name="logo-github" item-start></ion-icon>
+          Github
+        </ion-item>
+      </ion-list>
+  
+      <div *ngSwitchCase="'foto'" padding>
+        <div class="row">
+          <div class="column">
+            <img class="img" src="{{item.img}}" alt="{{item.name}}" *ngFor="let item of photo"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </ion-content>
+  

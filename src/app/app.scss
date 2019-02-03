@@ -1,0 +1,500 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+body {
+  border: 1px solid #005cfe;
+}
+#title-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 32px;
+  -webkit-app-region: drag;
+  background: #f4f4f4;
+  border-bottom: 1px solid #5c8ee4;
+  /*box-shadow: 1px 1px 1px #8491a9;*/
+  z-index: 10;
+}
+#title-center {
+  position: absolute;
+  color: #3b3b3b;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 32px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translateX(-50%);
+}
+#title-center::selection {
+  background: transparent;
+}
+#window-control {
+  float: left;
+  height: 32px;
+  margin-left: 10px;
+}
+#window-control::selection {
+  background: transparent;
+}
+#window-control .buttons {
+  -webkit-app-region: no-drag;
+  border-radius: 200px;
+  display: inline-block;
+  height: 12px;
+  margin: 10px 2px;
+  /*transition: 0.08s ease-out;*/
+  width: 12px;
+}
+#window-control .buttons:hover {
+  border-radius: 200px;
+  cursor: pointer;
+  height: 16px;
+  margin: 8px 0px;
+  width: 16px;
+}
+#max-button {
+  background: linear-gradient(#00D89F, #09E17B);
+}
+#min-button {
+  background: linear-gradient(#FFE066, #F0C808);
+}
+#close-button {
+  background: linear-gradient(#F88734, #FD6A51);
+}
+ion-content {
+  margin-top: 76px;
+}
+.scroll-content {
+  overflow-y: auto;
+}
+ion-header, ion-menu ion-content {
+  margin-top: 32px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body, html {
+    height: 100%;
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    overflow-y: hidden;
+}
+
+#loading-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #222;
+  }
+  
+  #loading-text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #999;
+    width: 100px;
+    height: 30px;
+    margin: -7px 0 0 -45px;
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 20px;
+  }
+  
+  #loading-content {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 170px;
+    height: 170px;
+    margin: -85px 0 0 -85px;
+    border: 3px solid #F00;
+  }
+  
+  #loading-content:after {
+    content: "";
+    position: absolute;
+    border: 3px solid #0F0;
+    left: 15px;
+    right: 15px;
+    top: 15px;
+    bottom: 15px;
+  }
+  
+  #loading-content:before {
+    content: "";
+    position: absolute;
+    border: 3px solid #00F;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+  }
+  
+  #loading-content {
+    border: 3px solid transparent;
+    border-top-color: #4D658D;
+    border-bottom-color: #4D658D;
+    border-radius: 50%;
+    -webkit-animation: loader 2s linear infinite;
+    -moz-animation: loader 2s linear infinite;
+    -o-animation: loader 2s linear infinite;
+    animation: loader 2s linear infinite;
+  }
+  
+  #loading-content:before {
+    border: 3px solid transparent;
+    border-top-color: #D4CC6A;
+    border-bottom-color: #D4CC6A;
+    border-radius: 50%;
+    -webkit-animation: loader 3s linear infinite;
+      -moz-animation: loader 2s linear infinite;
+    -o-animation: loader 2s linear infinite;
+    animation: loader 3s linear infinite;
+  }
+  
+  #loading-content:after {
+    border: 3px solid transparent;
+    border-top-color: #84417C;
+    border-bottom-color: #84417C;
+    border-radius: 50%;
+    -webkit-animation: loader 1.5s linear infinite;
+    animation: loader 1.5s linear infinite;
+      -moz-animation: loader 2s linear infinite;
+    -o-animation: loader 2s linear infinite;
+  }
+  
+  @-webkit-keyframes loaders {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes loader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+a {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar,
+.overflow-x::-webkit-scrollbar,
+.overflow-y::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+  background: transparent;
+  opacity: 0.75;
+}
+
+::-webkit-scrollbar-track,
+.overflow-x::-webkit-scrollbar-track,
+.overflow-y::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+  opacity: 0.5;
+  transition: opacity 250ms;
+}
+
+::-webkit-scrollbar-thumb,
+.overflow-x::-webkit-scrollbar-thumb,
+.overflow-y::-webkit-scrollbar-thumb {
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  background-color: #aaa;
+	background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover,
+.overflow-x::-webkit-scrollbar-thumb:hover,
+.overflow-y::-webkit-scrollbar-thumb:hover {
+  background-color: #6b6b6b;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background-color:  #d4d4d4;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// Markdown
+.vignette {
+  &:before {
+    box-shadow: inset 0 0 100px #00000080;
+  }
+}
+.burn {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(circle, transparent 50%, red 150%);
+    mix-blend-mode: difference;
+  }
+}
+kbd {
+  margin: 0px 0.1em;
+  padding: 0.1em 0.6em;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  color: rgb(51, 51, 51);
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px #ffffff;
+  background-color: rgb(247, 247, 247);
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+  -webkit-border-radius: 3px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+// Tables
+table {
+  // display: block;
+  width: 100%;
+  overflow: auto;
+
+  th {
+    font-weight: 600;
+  }
+
+  th,
+  td {
+    padding: 6px 13px;
+    border: 1px solid lighten(#d1d5da, 5%);
+  }
+
+  tr {
+    background-color: #fff;
+    border-top: 1px solid darken(#d1d5da, 4%);
+
+    &:nth-child(2n) {
+      background-color: #f6f8fa;
+    }
+  }
+
+  img {
+    background-color: transparent;
+  }
+}
+
+blockquote {
+  display:block;
+  background: #fff;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  
+  /*Font*/
+  // font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: left;
+  
+  /*Borders - (Optional)*/
+  border-left: 15px solid color($colors, primary);
+  border-right: 2px solid color($colors, primary);
+  
+  /*Box Shadow - (Optional)*/
+  -moz-box-shadow: 2px 2px 15px #ccc;
+  -webkit-box-shadow: 2px 2px 15px #ccc;
+	box-shadow: 2px 2px 15px #ccc;
+	
+	&:before{
+		content: "\201C"; /*Unicode for Left Double Quote*/
+		
+		/*Font*/
+		// font-family: Georgia, serif;
+		font-family: Arial;
+		font-size: 60px;
+		font-weight: bold;
+		color: #999;
+		
+		/*Positioning*/
+		position: absolute;
+		left: 10px;
+		top: 0;
+	}
+
+	&:after{
+		/*Reset to make sure*/
+		content: "";
+	}
+
+	p {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+		position: relative;
+		top: -0;
+		left: 0px;
+	}
+
+	span {
+    font-family: Arial, Helvetica, sans-serif;
+		display: block;
+		color: #333333;
+		font-style: normal;
+		font-weight: bold;
+		margin-top: 1em;
+	}
+}
+
+.menu-content {
+  .avatar {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 1.6rem;
+
+    img {
+      height: 8rem;
+      margin-bottom: 1.6rem;
+      border-radius: 100%;
+      border: 4px solid color($colors, light);
+    }
+
+    p {
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+  ion-list {
+    button:not(.file-input) {
+      ion-icon {
+        &:first-child {
+          min-width: 0;
+        }
+        &:last-child {
+          min-width: 0;
+        }
+        &:before {
+          background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.logout-button {
+  background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+  background-size: 300% 300%;
+  animation: grdientAnim 10s ease infinite;
+}
+
+.mask {
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+.cover {
+  position: relative;
+  line-height: 0;
+  background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+  background-size: 300% 300%;
+  animation: grdientAnim 10s ease infinite;
+  height: 172px;
+
+  .header {
+    position: absolute;
+    top: $cordova-md-statusbar-padding;
+    left: 0.8rem;
+  }
+
+  img.cover {
+    width: 100%;
+    border: none;
+    vertical-align: middle;
+    height: 172px;
+  }
+
+  .version {
+    position: absolute;
+    // top: calc(#{$cordova-md-statusbar-padding} + 10px);
+    bottom: 15px;
+    right: 10px;
+    display: block;
+    border-radius: 8px;
+    background: #00000052;
+    color: #fff;
+    border: 1px;
+    width: 60px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    line-height: 20px;
+  }
+}
+
+@keyframes grdientAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.toolbar-ios {
+  padding: 3.5px;
+}
+
+ion-header ion-icon.back-button-icon.icon {
+  color: map-get($colors, light);
+}

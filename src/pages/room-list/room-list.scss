@@ -1,0 +1,110 @@
+page-room-list {
+  ion-content {
+    margin-top: 32px;
+  }
+  .item-ios ion-avatar[item-left],
+  .item-ios ion-thumbnail[item-left],
+  .item-ios ion-avatar[item-start],
+  .item-ios ion-thumbnail[item-start] {
+    // margin-top: 0;
+  }
+  ion-avatar {
+    .profile-picture {
+      box-shadow: 0px 4px 4px #a3a3a3;
+      margin: auto;
+      width: 92px;
+      height: 92px;
+    }  
+  }
+
+  ion-label {
+    white-space: inherit;
+
+    .chat {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      display: block;
+      border-left: 2px solid color($colors, primary);
+      padding-left: 4px;
+    }
+  }
+
+  .list-ios {
+    .item-block:first-child {
+      border-top: 0;
+    }
+
+    .item-block:last-child .item-inner,
+    .item-wrapper:last-child .item-block .item-inner {
+      border-bottom: 0.55px solid #c8c7cc;
+    }
+
+    .item-block:last-child.input-has-focus .item-inner,
+    .item-block:last-child.item-input-has-focus .item-block .item-inner {
+      border-bottom: 0.55px solid color($colors, primary);
+    }
+
+    .item-label-floating.item-input-has-focus .item-inner {
+      color: color($colors, primary);
+    }
+  }
+
+  .item-ios {
+    // padding-left: 20px;
+    // padding-right: 20px;
+  }
+
+  .list-ios > .item-block:last-child,
+  .list-ios > .item-wrapper:last-child .item-block {
+    border: none;
+  }
+
+  .obrolan {
+    ion-card {
+      margin-top: 20px;
+
+      &:first-child {
+        margin-top: 12px;
+      }
+    }
+    .post-header {
+      border-bottom: 1px solid #ececec;
+
+      ion-avatar {
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+    .post-img {
+      position: relative;
+      // border-top: 1px solid #ececec;
+      border-bottom: 1px solid #ececec;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .post-content {
+      white-space: pre-line;
+      padding: 0 16px;
+      background: #f4f4f4;
+
+      .chat {
+        white-space: initial;
+        display: block;
+        margin-top: -24px;
+        padding: 8px;
+        background: #ececec;
+        border-left: 2px solid #faa;
+      }
+    }
+
+    .post-footer {
+      border-top: 1px solid #ececec;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <button ion-button menuToggle color="light" style="display: block !important;">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-segment [(ngModel)]="pages" color="light" (ionChange)="onSegmentChange()">
+      <ion-segment-button value="chat">
+        Aktif
+      </ion-segment-button>
+      <ion-segment-button value="new">
+        Antrian
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons end>
+      <button ion-button icon-only color="light">
+        <ion-icon ios="ios-notifications" style="zoom: .8;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background: #fbfbfb">
+  <div [ngSwitch]="pages">
+    <div class="obrolan" *ngSwitchCase="'chat'">
+      <ion-card *ngFor="let chat of dataServices.rooms">
+        <ion-item class="post-header">
+          <ion-avatar item-start>
+            <img *ngIf="!chat.petani.picture" src="assets/imgs/{{ chat.petani.gender }}.png">
+            <img *ngIf="chat.petani.picture" [src]="api.url + chat.petani.picture">
+          </ion-avatar>
+
+          <h2>{{ chat.petani.name }}</h2>
+          <p><ion-icon name="ios-calendar-outline" style="zoom: 0.85"></ion-icon> {{ (chat.created * 1000) | date: 'M/dd/yyyy'}}  {{ common.getHHMM(chat.created) }}</p>
+          <button ion-button clear item-end *ngIf='chat.new > 0'>
+            <ion-badge color="secondary">+{{ chat.new }}</ion-badge>
+          </button>
+        </ion-item>
+
+        <ion-card-content class="post-content">
+          <blockquote>{{ chat.subject }}</blockquote>
+          <span *ngIf="chat.message" class="chat">
+            <span ion-text *ngIf="chat.message.from !== userData.user_id">
+              {{ chat.petani.name }}<br />
+              <i ion-text [color]="chat.message.read ? 'dark':'primary'" >{{ chat.message.text }}</i>
+            </span>
+            <span ion-text *ngIf="chat.message.from === userData.user_id">
+              Saya<br />
+              <i ion-text color="dark">{{ chat.message.text }}</i>
+            </span>
+            <br />
+            <small>{{ common.relative_time(chat.message.created) }}</small>
+          </span>
+        </ion-card-content>
+
+        <ion-row class="post-footer">
+          <ion-col center text-right>
+            <button ion-button icon-end center small (click)="openChat(chat.id)">
+              <div>Buka</div>
+              <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <div style="display: block; min-height: 35px"></div>
+    </div>
+
+    <div class="obrolan" *ngSwitchCase="'new'">
+      <ion-card *ngFor="let chat of dataServices.newrooms">
+        <ion-item class="post-header">
+          <ion-avatar item-start>
+            <img *ngIf="!chat.petani.picture" src="assets/imgs/{{ chat.petani.gender }}.png">
+            <img *ngIf="chat.petani.picture" [src]="api.url + chat.petani.picture">
+          </ion-avatar>
+
+          <h2>{{ chat.petani.name }}</h2>
+          <p><ion-icon name="ios-calendar-outline" style="zoom: 0.85"></ion-icon> {{ (chat.created * 1000) | date: 'M/dd/yyyy'}}  {{ common.getHHMM(chat.created) }}</p>
+          <button ion-button clear item-end *ngIf='chat.new > 0'>
+            <ion-badge color="secondary">+{{ chat.new }}</ion-badge>
+          </button>
+        </ion-item>
+
+        <ion-card-content class="post-content">
+          <blockquote>{{ chat.subject }}</blockquote>
+        </ion-card-content>
+
+        <ion-row class="post-footer">
+          <ion-col center text-right>
+            <button ion-button icon-end center small (click)="joinChat(chat.id)">
+              <div>Jawab</div>
+              <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <div style="display: block; min-height: 35px"></div>
+    </div>
+
+  </div>
+</ion-content>

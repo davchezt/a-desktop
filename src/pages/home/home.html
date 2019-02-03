@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <!--ion-buttons start-->
+    <button ion-button menuToggle color="light" style="display: block !important;">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--/ion-buttons-->
+    <ion-searchbar #searchInput (ionInput)="getSearch($event)" placeholder="Pencarian"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="light">
+        <ion-icon ios="ios-notifications" style="zoom: .8;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar border-top color="light">
+    <ion-segment [(ngModel)]="pages" color="primary">
+      <ion-segment-button value="jadwal">
+        Jadwal
+      </ion-segment-button>
+      <ion-segment-button value="kalendar">
+        Kalendar
+      </ion-segment-button>
+      <ion-segment-button value="cuaca">
+        Cuaca
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background: #fbfbfb">
+  <div [ngSwitch]="pages">
+    <ion-list *ngSwitchCase="'jadwal'">
+      <ion-card>
+        <ion-card-content Markdown>
+# H1
+## H2
+### h3
+
+```js
+console.writeline('anu');
+```
+> Hidup berkembang dan bermetamorfosis.
+> <span>Raiza Rhamdan</span>
+
+```html
+<html>
+  <head>
+    <title>TEST</title>
+  </head>
+  <body>
+    <h1>TEST</h1>
+  </body>
+</html>
+```
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-content Markdown>
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
+
+    <ion-card *ngSwitchCase="'kalendar'">
+      <ion-card-content Markdown>
+        <kbd>CTRL</kbd> + <kbd>K</kbd>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'cuaca'">
+      <ion-card-content Markdown>
+        <kbd>CTRL</kbd> + <kbd>C</kbd>
+      </ion-card-content>
+    </ion-card>
+    
+    <div style="display: block; min-height: 35px"></div>
+  </div>
+</ion-content>

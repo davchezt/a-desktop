@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <button ion-button menuToggle color="light" style="display: block !important;">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar #searchInput (ionInput)="getSearch($event)" placeholder="Pencarian"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="light">
+        <ion-icon ios="ios-notifications" style="zoom: .8;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar border-top color="light">
+    <ion-segment [(ngModel)]="pages" color="primary" (ionChange)="onSegmentChange()">
+      <ion-segment-button value="petani">
+        Petani
+      </ion-segment-button>
+      <ion-segment-button value="agronomis">
+        Agronomis
+      </ion-segment-button>
+      <ion-segment-button value="bandar">
+        Bandar
+      </ion-segment-button>
+    </ion-segment>    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+</ion-content>

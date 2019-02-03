@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-navbar color="primary" #navbar>
+    <ion-title>
+      {{ petani.name }}<br />
+      <small *ngIf="petani.online && isPetaniTyping"><i>mengetik...</i></small>
+      <small *ngIf="!petani.online"><i>offline</i></small>
+      <small *ngIf="petani.online && !isPetaniTyping"><i>online</i></small>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid padding>
+    <ion-row>
+      <ion-col col-12 class="message me">
+        <ion-row>
+          <ion-col>
+            <span class="user_name">{{ user.name }}</span>
+            <span class="text">{{ subject }}</span>
+            <div class="time">{{ common.relative_time(created) }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let chat of chats">
+      
+      <ion-col col-9 *ngIf="chat.from !== user.user_id" class="message other">
+        <ion-row>
+          <ion-col>
+            <span class="user_name">{{ petani.name }}</span>
+            <span class="image" *ngIf="chat.image">
+              <img src="{{ dataServices.socketUrl }}/{{ chat.image }}" alt="gambar" imageViewer />
+            </span>
+            <span class="text">{{ chat.text }}</span>
+            <div class="time">{{ common.relative_time(chat.created) }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+  
+      <ion-col offset-3 col-9 *ngIf="chat.from === user.user_id" class="message me">
+        <ion-row>
+          <ion-col>
+            <span class="user_name">{{ user.name }}</span>
+            <span class="image" *ngIf="chat.image">
+              <img src="{{ dataServices.socketUrl }}/{{ chat.image }}" alt="gambar" imageViewer />
+            </span>
+            <span class="text">{{ chat.text }}</span>
+            <div class="read">
+              <i ion-text text-left *ngIf="chat.read">✔✔</i>
+              <i ion-text text-left class="unread" *ngIf="!chat.read && petani.online">✔✔</i>
+              <i ion-text text-left class="unread" *ngIf="!chat.read && !petani.online">✔</i>
+            </div>
+            <div class="time">
+              {{ common.relative_time(chat.created) }}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>
+
+<ion-footer #footerInput [style.height]="showEmojiPicker ? '275px' : '62px'">
+  <ion-toolbar *ngIf="file" class="file-preview">
+    <ion-list style="padding: 0;margin:0;">
+      <ion-item style="padding-top: 0; padding-bottom:0; border-radius: 4px;" no-lines>
+        <ion-icon name="attach" item-left style="zoom:0.75; margin: 0; margin-top: 6px;"></ion-icon>
+        <span ion-text class="label" color="gray">{{file.name}}</span>
+        <button ion-button item-right clear (click)="clearFile()">
+          <ion-icon name="ios-backspace-outline"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+
+  <ion-toolbar style="padding-bottom: 0;">
+    <ion-grid style="padding-bottom: 0;">
+      <ion-row no-padding>
+        <ion-col col-1 style="padding: 0;margin:0;" no-padding text-left>
+          <button ion-button clear icon-only item-left (click)="switchEmojiPicker()" style="margin-left: -10px">
+            <ion-icon name="{{showEmojiPicker ? 'arrow-dropdown':'arrow-dropup'}}" style="margin-top: -8px"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-10 style="padding: 0;margin:0;" no-padding text-center>
+          <ion-list style="padding: 0;margin:0;">
+            <ion-item style="padding-left: 0; border-radius: 4px;" no-lines>
+                
+              <button ion-button rounded small item-right class="file-input">
+                <ion-icon name="attach" style="zoom:1.5" color="light"></ion-icon>
+                <input type="file" accept="image/*" (change)="changeListener($event)" />
+              </button>
+
+              <ion-textarea rows="1" #messageInput type="text" placeholder="Pesan..." [(ngModel)]="message" (ionFocus)="scrollBottom()" (keydown)="isTyping($event)" (keyup)="isTyping($event)" (input)="onKeypress($event)" name="message" style="padding-left: 12px"></ion-textarea>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col col-1 style="padding: 0;margin:0; padding-left: 10px;" no-padding text-right>
+          <button ion-button icon-only clear item-right (click)="sendMessage()" [disabled]="message === ''" style="margin-left: -10px">
+            <ion-icon name="arrow-forward" style="margin-top: -8px"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  <emoji-picker [(ngModel)]="message"></emoji-picker>
+</ion-footer>
+<!--ion-footer #footerInput style="background-color: #fff;">
+  <ion-toolbar>
+    <form (ngSubmit)="sendMessage()">
+    <ion-row>
+      <ion-col col-10>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="Pesan..." [(ngModel)]="message" (ionFocus)="scrollBottom()" (keydown)="isTyping($event)" (keyup)="isTyping($event)" (ionInput)="onKeypress($event)" name="message" #messageInput></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear color="primary" (click)="sendMessage()" [disabled]="message === ''">
+          <ion-icon name="send" style="zoom: 1.5;"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    </form>
+  </ion-toolbar>
+</ion-footer-->

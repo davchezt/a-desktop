@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle color="light">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Dashboard
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="light">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top color="primary">
+    <ion-segment color="light">
+      <ion-segment-button value="new">
+        New
+      </ion-segment-button>
+      <ion-segment-button value="hot">
+        Hot
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-tabs #dTabs>
+  <ion-tab [root]="tab1Root" tabIcon="home" tabTitle="Home">Menu</ion-tab>
+  <ion-tab [root]="tab2Root" tabIcon="settings" tabTitle="Settings">Settings</ion-tab>
+</ion-tabs>

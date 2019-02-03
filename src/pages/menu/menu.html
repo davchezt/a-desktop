@@ -1,0 +1,60 @@
+<ion-split-pane>
+    <ion-menu [content]="content" id="MainMenu">
+      <ion-content class="menu-content">
+        <div class="cover header-md mask" margin-bottom>
+          <div class="version">
+            <span>v0.1.0</span>
+          </div>
+          <div class="avatar">
+            <img *ngIf="!userData.pic" src="assets/imgs/{{userData.gender}}.png">
+            <img *ngIf="userData.pic" [src]="api.url + userData.pic">
+            <p>{{ userData.name }}</p>
+          </div>
+        </div>
+        
+        <ion-item-divider style="margin-top: -15px;">Pribadi</ion-item-divider>
+        <ion-list no-lines>
+          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+            <ion-icon name="{{p.icon}}" item-left></ion-icon>
+            {{ p.title }}
+          </button>
+        </ion-list>
+        
+        <ion-item-divider style="margin-top: -30px;">Aplikasi</ion-item-divider>
+        <ion-list no-lines>
+          <button menuClose ion-item *ngFor="let p of pagesTwo" (click)="openPage(p)">
+            <ion-icon name="{{p.icon}}" item-left></ion-icon>
+            {{ p.title }}
+          </button>
+        </ion-list>
+  
+        <ion-item-divider style="margin-top: -30px;">Masalah</ion-item-divider>
+        <ion-list no-lines>
+          <button menuClose ion-item *ngFor="let p of pagesThree" (click)="openPage(p)">
+            <ion-icon name="{{ p.icon }}" item-left></ion-icon>
+            {{ p.title }}
+          </button>
+        </ion-list>
+      </ion-content>
+    
+      <ion-footer border-top>
+        <ion-toolbar>
+        <ion-grid no-padding>
+          <ion-row no-padding class="other-data" center>
+            <ion-col no-padding class="column"></ion-col>
+            <ion-col no-padding class="column">
+              <button menuClose ion-button icon-left center color="agrifarm" (click)="logout()" style="height: 34px;" class="logout-button">
+                <ion-icon name="log-out"></ion-icon>
+                Log Out
+              </button>
+            </ion-col>
+            <ion-col no-padding class="column"></ion-col>
+          </ion-row>
+        </ion-grid>
+        </ion-toolbar>
+      </ion-footer>
+    
+    </ion-menu>
+    
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+  </ion-split-pane>

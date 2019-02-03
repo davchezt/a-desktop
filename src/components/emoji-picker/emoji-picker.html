@@ -1,0 +1,96 @@
+<div class="emoji-picker">
+  <div class="emoji-nav">
+    <span [class.active]="selected === 'history'" (click)="setSelected('history')">🕒</span>
+    <span [class.active]="selected === 'emoji'" (click)="setSelected('emoji')">😃</span>
+    <span [class.active]="selected === 'face'" (click)="setSelected('face')">👩</span>
+    <span [class.active]="selected === 'baloon'" (click)="setSelected('baloon')">🎈</span>
+    <span [class.active]="selected === 'food'" (click)="setSelected('food')">🍕</span>
+    <span [class.active]="selected === 'car'" (click)="setSelected('car')">🏤</span>
+    <span [class.active]="selected === 'heart'" (click)="setSelected('heart')">🧡</span>
+  </div>
+  <div class="emoji-items" [ngSwitch]="selected">
+    <ion-slides pager *ngSwitchCase="'emoji'">
+      <ion-slide *ngFor="let items of emojiArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides pager *ngSwitchCase="'face'">
+      <ion-slide *ngFor="let items of faceArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides pager *ngSwitchCase="'baloon'">
+      <ion-slide *ngFor="let items of baloonArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides pager *ngSwitchCase="'food'">
+      <ion-slide *ngFor="let items of foodArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides pager *ngSwitchCase="'car'">
+      <ion-slide *ngFor="let items of carArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides pager *ngSwitchCase="'heart'">
+      <ion-slide *ngFor="let items of heartArr">
+        <span
+          class="emoji-item"
+          (click)="setValue(item)"
+          *ngFor="let item of items"
+        >
+          {{ item }}
+        </span>
+      </ion-slide>
+    </ion-slides>
+
+    <div *ngSwitchCase="'history'">
+      <div class="emoji-history" style="margin-top: 20px;">
+        <span
+          class="emoji-item-history"
+          (click)="setValue(item)"
+          *ngFor="let item of historyArr"
+        >
+          {{ item }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

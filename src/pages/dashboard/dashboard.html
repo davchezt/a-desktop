@@ -1,0 +1,5 @@
+<ion-tabs #dTabs>
+  <ion-tab [root]="tab1" tabTitle="" tabIcon="home" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab2" tabTitle="" tabIcon="contacts" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab3" tabTitle="" tabIcon="chatboxes" tabBadge="{{ chatCount > 0 ? chatCount : '' }}" tabBadgeStyle="danger" tabsHideOnSubPages="true"></ion-tab>
+</ion-tabs>
