@@ -1,0 +1,8 @@
+<div id="title-bar" *ngIf="isElectron">
+  <span id="title-center" title="{{text}}" [innerHTML]="text"></span>
+  <div id="window-control">
+    <div id="close-button" class="buttons" title="Close" (click)="close()"></div>
+    <div id="max-button" class="buttons" title="Maximize" (click)="maximize()"></div>
+    <div id="min-button" class="buttons" title="Minimize" (click)="minimize()"></div>
+  </div>
+</div>

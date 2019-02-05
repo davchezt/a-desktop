@@ -1,0 +1,65 @@
+controll-box {
+  ion-content {
+    margin-top: 76px;
+  }
+
+  #title-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 32px;
+    -webkit-app-region: drag;
+    background: #f4f4f4;
+    border-bottom: 1px solid #5c8ee4;
+    /*box-shadow: 1px 1px 1px #8491a9;*/
+    z-index: 10;
+  }
+  #title-center {
+    position: absolute;
+    color: #3b3b3b;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 32px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
+  }
+  #title-center::selection {
+    background: transparent;
+  }
+  #window-control {
+    float: left;
+    height: 32px;
+    margin-left: 10px;
+  }
+  #window-control::selection {
+    background: transparent;
+  }
+  #window-control .buttons {
+    -webkit-app-region: no-drag;
+    border-radius: 200px;
+    display: inline-block;
+    height: 12px;
+    margin: 10px 2px;
+    /*transition: 0.08s ease-out;*/
+    width: 12px;
+  }
+  #window-control .buttons:hover {
+    border-radius: 200px;
+    cursor: pointer;
+    height: 16px;
+    margin: 8px 0px;
+    width: 16px;
+  }
+  #max-button {
+    background: linear-gradient(#00D89F, #09E17B);
+  }
+  #min-button {
+    background: linear-gradient(#FFE066, #F0C808);
+  }
+  #close-button {
+    background: linear-gradient(#F88734, #FD6A51);
+  }
+}

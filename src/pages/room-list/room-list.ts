@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { RoomChatPage } from '../room-chat/room-chat';
-import { Common } from '../../providers/common/common';
-import { Api } from '../../providers/api/api';
+// import { Common } from '../../providers/common/common';
+// import { Api } from '../../providers/api/api';
 
 @Component({
   selector: 'page-room-list',
@@ -17,8 +17,8 @@ export class RoomListPage {
     public navParams: NavParams,
     private dataServices: DataProvider,
     public events: Events,
-    private common: Common,
-    private api: Api
+    // private common: Common,
+    // private api: Api
   ) {
     this.userData = this.dataServices.user;
     this.userData.user_id = parseInt(this.userData.user_id);

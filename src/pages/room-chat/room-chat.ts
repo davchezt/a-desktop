@@ -87,14 +87,14 @@ export class RoomChatPage {
     });
     this.onStartTyping = this.socketServices.on('start-typing').subscribe(data => {
       let message:any = data;
-      if (message.user.toString() === this.petani.id.toString()) {
+      if (message.user === this.petani.id) {
         // console.log('start-typing');
         this.isPetaniTyping = true;
       }
     });
     this.onStopTyping = this.socketServices.on('stop-typing').subscribe(data => {
       let message:any = data;
-      if (message.user.toString() === this.petani.id.toString()) {
+      if (message.user === this.petani.id) {
         // console.log('stop-typing');
         this.isPetaniTyping = false;
       }
@@ -125,6 +125,9 @@ export class RoomChatPage {
       userId: this.user.user_id
     });
     this.socketServices.emit('stop-typing', { room: this.roomId, form: this.user.user_id });
+    if (this.typingMessage) {
+      clearTimeout(this.typingMessage);
+    }
     this.onMessage.unsubscribe();
     this.onRoom.unsubscribe();
     this.outRoom.unsubscribe();
@@ -185,6 +188,7 @@ export class RoomChatPage {
       this.chats.reverse();
       this.dataServices.getAgronomis(room.petani).subscribe(user => {
         this.petani = user;
+        this.petani.id = parseInt(this.petani.id);
         this.petani.online = this.dataServices.isOnline(room.petani);
         // FEEDS
         if (this.reqJoinRoom) this.sendAnswerRoomFeed();

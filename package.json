@@ -24,11 +24,10 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"npm run ionic:start\" \"wait-on http://localhost:8100 && electron . --serve\"",
-    "build": "npm run ionic:build && electron:build",
-    "electron:build": "electron-builder",
+    "build": "npm run ionic:build && electron-builder",
     "ionic:start": "ionic-app-scripts serve --nobrowser --prod",
     "ionic:clean": "ionic-app-scripts clean",
-    "ionic:build": "ionic-app-scripts build --prod",
+    "ionic:build": "ionic-app-scripts build --prod --release",
     "ionic:lint": "ionic-app-scripts lint"
   },
   "homepage": "https://github.com/davchezt/ionic-3-electron",
@@ -57,10 +56,11 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
+    "concurrently": "^4.1.0",
     "electron": "^4.0.0",
     "electron-builder": "^20.38.4",
-    "concurrently": "^4.1.0",
-    "wait-on": "^3.2.0",
-    "typescript": "~2.6.2"
+    "is-electron": "^2.2.0",
+    "typescript": "~2.6.2",
+    "wait-on": "^3.2.0"
   }
 }

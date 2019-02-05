@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>AgriFarm&prod;</title>
+  <title>AgriFarm&reg;</title>
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -15,8 +15,32 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!-- cordova.js required for cordova apps (remove if not needed) -->
-  <!--script src="cordova.js"></script-->
+  <script>
+    function isElectron() {
+    // Renderer process
+    if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
+      return true;
+    }
+
+    // Main process
+    if (typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron) {
+      return true;
+    }
+
+    // Detect the user agent when the `nodeIntegration` option is set to true
+    if (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('Electron') >= 0) {
+      return true;
+    }
+
+    return false;
+}
+    if (isElectron()) {
+
+    }
+  </script>
+
+  <!-- simple peer -->
+  <script src="assets/js/simplepeer.min.js"></script>
 
   <!-- un-comment this code to enable service worker
   <script>
@@ -31,14 +55,6 @@
 
 </head>
 <body>
-  <div id="title-bar">
-    <span id="title-center" title="Markdown Reader">AgriFarm&reg; v0.1.0&beta;</span>
-    <div id="window-control">
-      <div id="close-button" class="buttons" title="Close"></div>
-      <!--div id="max-button" class="buttons" title="Maximize"></div-->
-      <div id="min-button" class="buttons" title="Minimize"></div>
-    </div>
-  </div>
   <!-- Ionic's root component and where the app will load -->
   <ion-app>
     <div id="loading-wrapper">
@@ -56,6 +72,5 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-  <script src="assets/js/renderer.js"></script>
 </body>
 </html>

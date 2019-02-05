@@ -1,18 +1,19 @@
 <ion-split-pane>
-    <ion-menu [content]="content" id="MainMenu">
-      <ion-content class="menu-content">
-        <div class="cover header-md mask" margin-bottom>
-          <div class="version">
-            <span>v0.1.0</span>
-          </div>
-          <div class="avatar">
-            <img *ngIf="!userData.pic" src="assets/imgs/{{userData.gender}}.png">
-            <img *ngIf="userData.pic" [src]="api.url + userData.pic">
-            <p>{{ userData.name }}</p>
-          </div>
+  <ion-menu [content]="content" id="MainMenu">
+    <ion-content class="menu-content">
+      <div class="cover header-md mask" margin-bottom>
+        <div class="version">
+          <span>v0.1.0</span>
         </div>
-        
-        <ion-item-divider style="margin-top: -15px;">Pribadi</ion-item-divider>
+        <div class="avatar">
+          <img *ngIf="!userData.pic" src="assets/imgs/{{userData.gender}}.png">
+          <img *ngIf="userData.pic" [src]="dataServices.apiUrl + userData.pic">
+          <p>{{ userData.name }}</p>
+        </div>
+      </div>
+
+      <div class="menu-list">
+        <ion-item-divider style="">Pribadi</ion-item-divider>
         <ion-list no-lines>
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
             <ion-icon name="{{p.icon}}" item-left></ion-icon>
@@ -27,7 +28,7 @@
             {{ p.title }}
           </button>
         </ion-list>
-  
+
         <ion-item-divider style="margin-top: -30px;">Masalah</ion-item-divider>
         <ion-list no-lines>
           <button menuClose ion-item *ngFor="let p of pagesThree" (click)="openPage(p)">
@@ -35,10 +36,11 @@
             {{ p.title }}
           </button>
         </ion-list>
-      </ion-content>
-    
-      <ion-footer border-top>
-        <ion-toolbar>
+      </div>
+    </ion-content>
+  
+    <ion-footer border-top>
+      <ion-toolbar>
         <ion-grid no-padding>
           <ion-row no-padding class="other-data" center>
             <ion-col no-padding class="column"></ion-col>
@@ -51,10 +53,10 @@
             <ion-col no-padding class="column"></ion-col>
           </ion-row>
         </ion-grid>
-        </ion-toolbar>
-      </ion-footer>
-    
-    </ion-menu>
-    
-    <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
-  </ion-split-pane>
+      </ion-toolbar>
+    </ion-footer>
+  
+  </ion-menu>
+  
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+</ion-split-pane>

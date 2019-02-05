@@ -1,3 +1,147 @@
 page-menu {
+  .menu-content {
+    .avatar {
+      position: absolute;
+      bottom: 0.8rem;
+      left: 1.6rem;
+  
+      img {
+        height: 8rem;
+        margin-bottom: 1.6rem;
+        border-radius: 100%;
+        border: 4px solid color($colors, light);
+      }
+  
+      p {
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+    ion-list {
+      button:not(.file-input) {
+        ion-icon {
+          &:first-child {
+            min-width: 0;
+          }
+          &:last-child {
+            min-width: 0;
+          }
+          &:before {
+            background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  
+  .logout-button {
+    background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+    background-size: 300% 300%;
+    animation: grdientAnim 10s ease infinite;
+  }
+  
+  .mask {
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .cover {
+    position: relative;
+    line-height: 0;
+    background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+    background-size: 300% 300%;
+    animation: grdientAnim 10s ease infinite;
+    height: 172px;
+  
+    .header {
+      position: absolute;
+      top: $cordova-md-statusbar-padding;
+      left: 0.8rem;
+    }
+  
+    img.cover {
+      width: 100%;
+      border: none;
+      vertical-align: middle;
+      height: 172px;
+    }
+  
+    .version {
+      position: absolute;
+      // top: calc(#{$cordova-md-statusbar-padding} + 10px);
+      bottom: 15px;
+      right: 10px;
+      display: block;
+      border-radius: 8px;
+      background: #00000052;
+      color: #fff;
+      border: 1px;
+      width: 60px;
+      height: 20px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+  
+  @keyframes grdientAnim {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .toolbar-ios {
+    padding: 3.5px;
+  }
+  
+  ion-header ion-icon.back-button-icon.icon {
+    color: map-get($colors, light);
+  }
 
+  .menu-list {
+    position: absolute;
+    width: 100%;
+    top: 172px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .menu-list {
+      border-right: 0;
+      min-width: 270px;
+      max-width: 320px;
+    }
+    ion-footer {
+      border-right: 0;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .menu-list {
+      border-right: 0.55px solid #c8c7cc;
+      min-width: 320px;
+      max-width: 320px;
+    }
+    ion-footer {
+      border-right: 0.55px solid #c8c7cc;
+    }
+  }
 }

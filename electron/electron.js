@@ -10,7 +10,7 @@ serve = args.some(function (val) { return val === '--serve'; });
 let url = serve ? 'http://localhost:8100':`file://${path.join(__dirname, '../www/index.html')}`;
 
 function createWindow() {
-    win = new BrowserWindow({ width: 480, height: 720, frame: false, resizable: false });
+    win = new BrowserWindow({ width: 480, height: 720, frame: false, resizable: true });
     win.loadURL(url);
     win.setMenu(null);
     // win.webContents.openDevTools({ mode:'undocked' }); // enable/disable by pressing F12

@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 
 import { Electron } from '../../providers/electron/electron';
 import { Common } from '../../providers/common/common';
-import { Api } from '../../providers/api/api';
+// import { Api } from '../../providers/api/api';
 import { DataProvider } from '../../providers/data/data';
 import { SocketProvider } from '../../providers/socket/socket';
 import { DashboardPage } from '../dashboard/dashboard';
@@ -13,6 +13,7 @@ import { SettingsPage } from '../settings/settings';
 import { ContactPage } from '../contact/contact';
 import { TabsPage } from '../tabs/tabs';
 import { AboutPage } from '../about/about';
+import { RoomPage } from '../room/room';
 
 @Component({
   selector: 'page-menu',
@@ -47,7 +48,7 @@ export class MenuPage {
     private events: Events,
     private storage: Storage,
     private common: Common,
-    private api: Api,
+    // private api: Api,
     private dataServices: DataProvider,
     private socketServices: SocketProvider
   ) {
@@ -120,12 +121,14 @@ export class MenuPage {
   registerPages() {
     this.pages = [
       { title: 'Beranda', icon: 'ios-home-outline', component: DashboardPage },
-      { title: 'Profile', icon: 'ios-contact-outline', component: ProfilePage }
+      { title: 'Profile', icon: 'ios-contact-outline', component: ProfilePage },
+      { title: 'Video', icon: 'ios-videocam-outline', component: RoomPage }
     ];
 
     this.pagesTwo = [
       { title: 'Pengaturan', icon: 'ios-settings-outline', component: SettingsPage },
-      { title: 'Feedback', icon: 'ios-mail-outline', component: ContactPage }
+      { title: 'Feedback', icon: 'ios-mail-outline', component: ContactPage },
+      // { title: 'Call', icon: 'ios-videocam-outline', component: RoomPage }
     ];
 
     this.pagesThree = [
@@ -154,6 +157,11 @@ export class MenuPage {
     // this.socket.emit('leave-room');
     this.nav.setRoot(page.component, { openTab: page.openTab });
   }
+
+  // openPageParam(page) {
+  //   this.socket.emit('leave-room');
+  //   this.nav.setRoot(page.component, { openTab: page.openTab, caller: true });
+  // }
 
   logout() {
     let time = new Date();

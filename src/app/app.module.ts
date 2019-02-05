@@ -13,12 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'angular2-markdown';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+const config: SocketIoConfig = { url: 'https://militant-socket-server.herokuapp.com', options: {} };
 
 // Emoji
 import { EmojiPickerComponentModule } from '../components/emoji-picker/emoji-picker.module';
 import { EmojiProvider } from '../providers/emoji';
 import { FeedProvider } from '../providers/feed/feed';
+import { ControllBoxComponentModule } from '../components/controll-box/controll-box.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FeedProvider } from '../providers/feed/feed';
     MarkdownModule.forRoot(),
     IonicStorageModule.forRoot(),
     EmojiPickerComponentModule,
+    ControllBoxComponentModule,
     IonicImageViewerModule
   ],
   bootstrap: [IonicApp],

@@ -1,3 +1,124 @@
 page-room {
+  .video-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1;
+  }
+  
+  .video-container iframe,
+  .video-container object,
+  .video-container embed,
+  .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    // border: 1px solid #ccc;
+  }
 
+  .myvideo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 4px solid #ccc;
+  }
+
+  .content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+
+    .button-group {
+      .col {
+        &:first-child:not(:last-child) {
+          padding-right: 0;
+          .button {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+        &:not(:first-child):not(:last-child) {
+          padding-right: 0;
+          padding-left: 0;
+          .button {
+            border-radius: 0;
+          }
+        }
+        &:last-child:not(:first-child) {
+          padding-left: 0;
+          .button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+    }
+
+    h1 {
+      padding-left: 10px;
+      text-align: center;
+      font-size: 150%;
+    }
+
+    h1:not(.timer) {
+      width: 16.3em;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(30, end) infinite;
+    }
+  }
+
+  .smile {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px; /* Negative half of height. */
+    margin-left: -65px; /* Negative half of width. */
+
+    ion-icon {
+      animation: heartbeat 1s infinite;
+      zoom: 10;
+    }
+  }
+
+  .time-now {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+
+    ion-item {
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 0.55px solid #c8c7cc;
+    }
+  }
+
+  @keyframes heartbeat {
+    0% { transform: scale( .75 ); }
+    20% { transform: scale( 2 ); }
+    40% { transform: scale( .75 ); }
+    60% { transform: scale( 2 ); }
+    80% { transform: scale( .75 ); }
+    100% { transform: scale( .75 ); }
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width:16.3em }
+  }
 }
