@@ -11,8 +11,11 @@ export class PenggunaPage {
   @ViewChild(Content) content: Content;
   @ViewChild('searchInput') searchInput;
   petani: any = [];
+  petaniCount: any = 0;
   agronomis: any = [];
+  agronomisCount: any = 0;
   bandar: any = [];
+  bandarCount: any = 0;
   pages: string = 'petani';
   limit: any = 10;
 
@@ -32,21 +35,22 @@ export class PenggunaPage {
 
   getSearch(event) {
     const val = event.target.value;
-    console.log(val);
+    console.log(val !== undefined ? val:'reset');
   }
 
   doInfinite(infiniteScroll) {
+    console.log("limit:", this.limit);
     let limit: any;
     switch(this.pages) {
       case 'petani':
-      limit = this.petani.length;
-      break;
+        limit = this.petaniCount;
+        break;
       case 'agronomis':
-      limit = this.agronomis.length;
-      break;
+        limit = this.agronomisCount;
+        break;
       default:
-      limit = this.bandar.length;
-      break;
+        limit = this.bandarCount;
+        break;
     }
     
     if (this.limit == parseInt(limit)) {
@@ -68,15 +72,21 @@ export class PenggunaPage {
   }
 
   onSegmentChange() {
-    this.limit = 10;
+    this.loadData();
+  }
+
+  loadData() {
     if (this.pages === 'petani') {
       this.getPetani();
+      if (this.limit > this.petaniCount) this.limit = 10; // Reset limit
     }
     else if (this.pages === 'agronomis') {
       this.getAgronomis();
+      if (this.limit > this.agronomisCount) this.limit = 10; // Reset limit
     }
     else {
       this.getBandar();
+      if (this.limit > this.bandarCount) this.limit = 10; // Reset limit
     }
   }
 
@@ -84,6 +94,8 @@ export class PenggunaPage {
     this.feed.getPetani("0", this.limit, true).subscribe(data => {
       let response:any = data;
       this.petani = response.data;
+      this.petaniCount = response.count;
+      // if (this.limit > 10) this.limit = 10; // Reset limit
       console.log(this.petani);
     }, err => {
       console.log(err);
@@ -94,6 +106,8 @@ export class PenggunaPage {
     this.feed.getAgronomis("0", this.limit, true).subscribe(data => {
       let response:any = data;
       this.agronomis = response.data;
+      this.agronomisCount = response.count;
+      // if (this.limit > 10) this.limit = 10; // Reset limit
       console.log(this.agronomis);
     }, err => {
       console.log(err);
@@ -104,6 +118,8 @@ export class PenggunaPage {
     this.feed.getBandar("0", this.limit, true).subscribe(data => {
       let response:any = data;
       this.bandar = response.data;
+      this.bandarCount = response.count;
+      // if (this.limit > 10) this.limit = 10; // Reset limit
       console.log(this.bandar);
     }, err => {
       console.log(err);

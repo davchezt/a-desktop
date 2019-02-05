@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
+import { Storage } from '@ionic/storage';
 
 declare var SimplePeer;
 
@@ -36,14 +37,27 @@ export class RoomPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public socket: Socket
+    public socket: Socket,
+    private storage: Storage
   ) {
     if (this.navParams.get('caller')) console.log('ya');
+
+    this.storage.get('userData').then((data) => {
+      if (data) {
+        let userData = JSON.parse(data);
+        userData.user_id = parseInt(userData.user_id);
+        this.roomId = this.roomId + "-" + userData.user_id;
+        console.log(this.roomId);
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   ionViewDidLoad() {
     this.startAnu();
     this.timeNow();
+    console.log(this.roomId);
   }
 
   startAnu() {

@@ -12,6 +12,7 @@ import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'angular2-markdown';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 const config: SocketIoConfig = { url: 'https://militant-socket-server.herokuapp.com', options: {} };
 
@@ -39,7 +40,8 @@ import { ControllBoxComponentModule } from '../components/controll-box/controll-
     IonicStorageModule.forRoot(),
     EmojiPickerComponentModule,
     ControllBoxComponentModule,
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    ImageCropperModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

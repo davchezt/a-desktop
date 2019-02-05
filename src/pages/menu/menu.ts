@@ -69,6 +69,7 @@ export class MenuPage {
         let userData = JSON.parse(data);
         userData.user_id = parseInt(userData.user_id);
 
+        if (this.dataServices.user.user_id === null) this.dataServices.user = userData;
         this.dataServices.getRoom();
         this.dataServices.loadNewRoom();
         this.socketServices.emit('online', userData.user_id);

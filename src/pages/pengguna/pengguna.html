@@ -27,5 +27,61 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div [ngSwitch]="pages">
+    <div *ngSwitchCase="'petani'">
+      <ion-list>
+        <button ion-item *ngFor="let user of petani">
+          <ion-avatar item-start>
+            <img *ngIf="!user.foto" src="assets/imgs/{{ user.kelamin }}.png">
+            <img *ngIf="user.foto" [src]="feed.apiUrl + user.foto">
+          </ion-avatar>
+          <h2>{{ user.nama }}</h2>
+          <p>
+            <ion-icon name="ios-mail-outline"></ion-icon> {{ user.email || 'none' }}<br />
+            <ion-icon name="ios-call-outline"></ion-icon> {{ user.kontak || 'none' }}<br />
+            <ion-icon name="ios-time-outline"></ion-icon> {{ user.join_date }}
+          </p>
+        </button>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'agronomis'">
+      <ion-list>
+        <button ion-item *ngFor="let user of agronomis">
+          <ion-avatar item-start>
+            <img *ngIf="!user.foto" src="assets/imgs/{{ user.kelamin }}.png">
+            <img *ngIf="user.foto" [src]="feed.apiUrl + user.foto">
+          </ion-avatar>
+          <h2>{{ user.nama }}</h2>
+          <p>
+            <ion-icon name="ios-mail-outline"></ion-icon> {{ user.email || 'none' }}<br />
+            <ion-icon name="ios-call-outline"></ion-icon> {{ user.kontak || 'none' }}<br />
+            <ion-icon name="ios-time-outline"></ion-icon> {{ user.join_date }}
+          </p>
+        </button>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'bandar'">
+      <ion-list>
+        <button ion-item *ngFor="let user of bandar">
+          <ion-avatar item-start>
+            <img *ngIf="!user.foto" src="assets/imgs/{{ user.kelamin }}.png">
+            <img *ngIf="user.foto" [src]="feed.apiUrl + user.foto">
+          </ion-avatar>
+          <h2>{{ user.nama }}</h2>
+          <p>
+            <ion-icon name="ios-mail-outline"></ion-icon> {{ user.email || 'none' }}<br />
+            <ion-icon name="ios-call-outline"></ion-icon> {{ user.kontak || 'none' }}<br />
+            <ion-icon name="ios-time-outline"></ion-icon> {{ user.join_date }}
+          </p>
+        </button>
+      </ion-list>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

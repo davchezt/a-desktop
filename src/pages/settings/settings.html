@@ -9,4 +9,17 @@
 
 <ion-content padding>
   <h1>Settings</h1>
+  <input type="file" (change)="fileChangeEvent($event)" />
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    [resizeToWidth]="512"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+
+  <img [src]="croppedImage.base64" imageViewer *ngIf="croppedImage" />
 </ion-content>

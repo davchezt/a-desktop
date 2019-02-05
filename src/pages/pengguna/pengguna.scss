@@ -1,3 +1,31 @@
 page-pengguna {
+  .list-ios {
+    .item-block:first-child {
+      border-top: 0;
+    }
 
+    .item-block:last-child .item-inner,
+    .item-wrapper:last-child .item-block .item-inner {
+      border-bottom: 0.55px solid #c8c7cc;
+    }
+
+    .item-block:last-child.input-has-focus .item-inner,
+    .item-block:last-child.item-input-has-focus .item-block .item-inner {
+      border-bottom: 0.55px solid color($colors, primary);
+    }
+
+    .item-label-floating.item-input-has-focus .item-inner {
+      color: color($colors, primary);
+    }
+  }
+
+  .list-ios > .item-block:last-child,
+  .list-ios > .item-wrapper:last-child .item-block {
+    border: none;
+  }
+
+  .item-ios {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
